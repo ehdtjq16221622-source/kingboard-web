@@ -101,14 +101,10 @@ async function handleConvert() {
 
 // ===== API 호출 =====
 async function callConvertAPI(text, style) {
-  const url = `${CONFIG.SUPABASE_URL}/functions/v1/convert`;
+  const url = "/api/convert";
   const res = await fetch(url, {
     method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      "apikey": CONFIG.SUPABASE_ANON_KEY,
-      "Authorization": `Bearer ${CONFIG.SUPABASE_ANON_KEY}`,
-    },
+    headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ text, style }),
   });
 
