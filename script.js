@@ -114,10 +114,10 @@ async function callConvertAPI(text, style) {
     throw new Error("하루 무료 변환 횟수(10회)를 모두 사용했습니다.");
   }
   if (!res.ok || data.error) {
-    throw new Error(data.error || "서버 오류가 발생했습니다.");
+    throw new Error(data.error || JSON.stringify(data));
   }
   if (!data.result) {
-    throw new Error("변환 결과를 받지 못했습니다.");
+    throw new Error("변환 결과를 받지 못했습니다. 응답: " + JSON.stringify(data));
   }
 
   return data.result;
